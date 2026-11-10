@@ -1,3 +1,4 @@
+
 import CTA from "@/sections/cta";
 import FAQ from "@/sections/faq";
 import Features1 from "@/sections/features-1";
@@ -11,7 +12,7 @@ import Testimonials from "@/sections/testimonials";
 
 export default function HomePage() {
   return (
-    <div className="px-4 xl:px-0 max-w-5xl mx-auto space-y-20 sm:space-y-24 md:space-y-32 lg:space-y-40 scroll-smooth">
+    <main className="mx-auto max-w-5xl space-y-20 scroll-smooth px-4 sm:space-y-24 md:space-y-32 lg:space-y-40 xl:px-0">
       <Hero />
       <Features1 />
       <Features2 />
@@ -22,6 +23,6 @@ export default function HomePage() {
       <FAQ />
       <CTA />
       <Footer />
-    </div>
-  )
+    </main>
+  );
 }

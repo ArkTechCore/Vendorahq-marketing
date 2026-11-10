@@ -1,102 +1,111 @@
-'use client'
 
-import Badge from "@/components/badge"
-import Card from "@/components/card"
-import Carousel from "@/components/carousel"
-import SlideEffect from "@/components/slide-effect"
-import Image from "next/image"
+"use client";
 
-const settings = {
-  badge: {
-    number: 1,
-    text: 'get started in seconds',
+import Badge from "@/components/badge";
+import Card from "@/components/card";
+import SlideEffect from "@/components/slide-effect";
+import {
+  Monitor,
+  CreditCard,
+  Package,
+  BarChart3,
+  ShieldCheck,
+  ArrowRight,
+} from "lucide-react";
+import Link from "next/link";
+
+const features = [
+  {
+    title: "Modern Checkout",
+    description:
+      "A streamlined point-of-sale interface designed for everyday retail transactions.",
+    icon: Monitor,
   },
-  title: 'Set Up in Minutes',
-  description: 'Simply add the script to your site, choose from a variety of plugins, or go for the API backend integration. Pirsch is the plug-and-play Google Analytics alternative.',
-  card_1: {
-    title: 'Effortless Setup',
-    content: 'Pirsch offers plugins, libraries, and tutorials for the most popular CMSs, website builders, and programming languages to get you up and running in no time.',
-    carousel_images: [
-      'https://cdn.worldvectorlogo.com/logos/react-2.svg',
-      'https://cdn.worldvectorlogo.com/logos/vue-9.svg',
-      'https://cdn.worldvectorlogo.com/logos/angular-icon-1.svg',
-      'https://cdn.worldvectorlogo.com/logos/nestjs.svg',
-      'https://cdn.worldvectorlogo.com/logos/laravel-2.svg',
-      'https://cdn.worldvectorlogo.com/logos/svelte-1.svg',
-      'https://cdn.worldvectorlogo.com/logos/golang-1.svg',
-      'https://cdn.worldvectorlogo.com/logos/rust.svg',
-    ]
+  {
+    title: "Payment Integration",
+    description:
+      "Designed for provider-managed payment terminals and verified transaction processing.",
+    icon: CreditCard,
   },
-  card_2: {
-    title: 'Seamless Switch',
-    content: 'Migrating from other web analytics solutions? Import your data from Plausible, Fathom, or Google Analytics in just a few clicks and easily continue where you left off.'
+  {
+    title: "Inventory Management",
+    description:
+      "Manage products, stock movements, and retail inventory workflows.",
+    icon: Package,
   },
-  card_3: {
-    title: 'No Cookie Banner',
-    content: 'Say goodbye to consent banners: Pirsch works without cookies and never stores your visitors personal identifiable information.'
+  {
+    title: "Business Reporting",
+    description:
+      "Review sales activity and operational information from your retail platform.",
+    icon: BarChart3,
   },
-  card_4: {
-    title: 'Privacy-Friendly by Design',
-    content: 'Built from the ground up with privacy in mind and with an open-source core, Pirsch offers uncompromising GDPR, CCPA, PECR, and Schrems II compliant data protection. All data is hosted on a secure server cluster in Germany.',
-    image: 'https://framerusercontent.com/images/6jTglLZFhLYMIuOe7EC0QFeykU.png?scale-down-to=512',
-  },
-}
+];
 
 export default function Features1() {
   return (
-    <div id='features' className="space-y-6 sm:space-y-7 md:space-y-8 lg:space-y-10 mx-auto text-center">
-      {/* Badge */}
+    <section
+      id="features"
+      className="mx-auto space-y-8 scroll-mt-24 text-center lg:space-y-10"
+    >
       <SlideEffect>
-        <Badge number={settings.badge.number} text={settings.badge.text} />
+        <Badge number={1} text="VENDORA POS" />
       </SlideEffect>
 
-      {/* Title */}
       <SlideEffect>
-        <h2 className="text-2xl md:text-4xl lg:text-header capitalize font-medium leading-none text-transparent bg-clip-text bg-gradient-to-b from-black to-black/60">{settings.title}</h2>
+        <h2 className="bg-gradient-to-b from-black to-black/60 bg-clip-text text-3xl font-medium text-transparent md:text-5xl lg:text-header">
+          Meet VendoraPOS
+        </h2>
       </SlideEffect>
 
-      {/* Description */}
-      <SlideEffect className="px-2 sm:px-10 md:px-0 w-full md:max-w-3/4 mx-auto text-sm lg:text-base">{settings.description}</SlideEffect>
+      <SlideEffect className="mx-auto max-w-3xl text-sm leading-relaxed lg:text-base">
+        Retail point-of-sale software bringing checkout,
+        inventory, payments, and store management together
+        in one connected experience.
+      </SlideEffect>
 
-      {/* Cards */}
-      <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
-        {/* card 1 */}
-        <SlideEffect direction="right" className="col-span-1 lg:col-span-3 h-full" isSpring={false}>
-          <Card>
-            <h3 className="text-xl md:text-title text-black font-medium">{settings.card_1.title}</h3>
-            <p className="mb-4">{settings.card_1.content}</p>
-            <Carousel images={settings.card_1.carousel_images} />
-          </Card>
-        </SlideEffect>
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+        {features.map((feature, index) => {
+          const Icon = feature.icon;
 
-        {/* card 2 */}
-        <SlideEffect direction="left" duration={1.3} className="col-span-1 lg:col-span-2 h-full" isSpring={false}>
-          <Card>
-            <h3 className="text-xl md:text-title text-black font-medium">{settings.card_2.title}</h3>
-            <p>{settings.card_2.content}</p>
-          </Card>
-        </SlideEffect>
-
-        {/* card 3 */}
-        <SlideEffect direction="right" duration={1} className="col-span-1 lg:col-span-2 h-full" isSpring={false}>
-          <Card>
-            <h3 className="text-xl md:text-title text-black font-medium">{settings.card_3.title}</h3>
-            <p>{settings.card_3.content}</p>
-          </Card>
-        </SlideEffect>
-
-        {/* card 4 */}
-        <SlideEffect direction="left" className="col-span-1 lg:col-span-3 h-full" isSpring={false}>
-          <Card className="flex flex-col lg:flex-row justify-center items-center">
-            <div className="space-y-3 md:space-y-5">
-              <h3 className="text-xl md:text-title text-black font-medium">{settings.card_4.title}</h3>
-              <p>{settings.card_4.content}</p>
-            </div>
-
-            <Image className="w-32 my-auto mx-auto" src={settings.card_4.image} alt={settings.card_4.title} width={512} height={512} />
-          </Card>
-        </SlideEffect>
+          return (
+            <SlideEffect
+              key={feature.title}
+              direction={index % 2 === 0 ? "right" : "left"}
+              isSpring={false}
+              className="h-full"
+            >
+              <Card className="h-full text-left">
+                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/20 text-black">
+                  <Icon size={25} />
+                </div>
+                <h3 className="text-xl font-medium text-black md:text-title">
+                  {feature.title}
+                </h3>
+                <p className="text-sm leading-relaxed">
+                  {feature.description}
+                </p>
+              </Card>
+            </SlideEffect>
+          );
+        })}
       </div>
-    </div>
-  )
+
+      <SlideEffect>
+        <div className="flex flex-wrap items-center justify-center gap-3 text-sm text-black">
+          <ShieldCheck size={19} className="text-primary" />
+          Built with payment verification and access controls in mind
+        </div>
+      </SlideEffect>
+
+      <SlideEffect>
+        <Link
+          href="#contact"
+          className="inline-flex items-center gap-2 font-medium text-black hover:opacity-70"
+        >
+          Learn more about VendoraPOS
+          <ArrowRight size={18} />
+        </Link>
+      </SlideEffect>
+    </section>
+  );
 }

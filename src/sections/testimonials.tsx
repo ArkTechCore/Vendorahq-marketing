@@ -1,74 +1,91 @@
-'use client'
 
-import Badge from "@/components/badge"
-import SlideEffect from "@/components/slide-effect"
-import TextRevealEffect from "@/components/text-reveal-effect"
-import { AnimatedTestimonials } from "@/components/ui/animated-testimonials"
+"use client";
 
-const settings = {
-  badge: {
-    number: 5,
-    text: 'GOOD COMPANY',
+import Badge from "@/components/badge";
+import Card from "@/components/card";
+import SlideEffect from "@/components/slide-effect";
+import TextRevealEffect from "@/components/text-reveal-effect";
+import {
+  Store,
+  ShieldCheck,
+  Layers3,
+  Workflow,
+} from "lucide-react";
+
+const principles = [
+  {
+    title: "Retail-Focused",
+    description:
+      "We design technology around the everyday needs of retail businesses, from checkout to store operations.",
+    icon: Store,
   },
-  title: 'Join Happy Customers',
-  description: 'Hundreds of millions of page views for thousands of sites are collected with Pirsch Analytics each month — see what our customers have to say.',
-  testimonials: [
-    {
-      quote:
-        "The attention to detail and innovative features have completely transformed our workflow. This is exactly what we've been looking for.",
-      name: "Sarah Chen",
-      designation: "Product Manager at TechFlow",
-      src: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=3560&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-      quote:
-        "Implementation was seamless and the results exceeded our expectations. The platform's flexibility is remarkable.",
-      name: "Michael Rodriguez",
-      designation: "CTO at InnovateSphere",
-      src: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-      quote:
-        "This solution has significantly improved our team's productivity. The intuitive interface makes complex tasks simple.",
-      name: "Emily Watson",
-      designation: "Operations Director at CloudScale",
-      src: "https://images.unsplash.com/photo-1623582854588-d60de57fa33f?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-      quote:
-        "Outstanding support and robust features. It's rare to find a product that delivers on all its promises.",
-      name: "James Kim",
-      designation: "Engineering Lead at DataPro",
-      src: "https://images.unsplash.com/photo-1636041293178-808a6762ab39?q=80&w=3464&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-      quote:
-        "The scalability and performance have been game-changing for our organization. Highly recommend to any growing business.",
-      name: "Lisa Thompson",
-      designation: "VP of Technology at FutureNet",
-      src: "https://images.unsplash.com/photo-1624561172888-ac93c696e10c?q=80&w=2592&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-  ]
-}
+  {
+    title: "Security by Design",
+    description:
+      "Our architecture emphasizes access controls, merchant data separation, and payment verification.",
+    icon: ShieldCheck,
+  },
+  {
+    title: "Connected Products",
+    description:
+      "VendoraPOS, VendoraKiosk, and our planned loyalty experience form a growing retail technology ecosystem.",
+    icon: Layers3,
+  },
+  {
+    title: "Practical Workflows",
+    description:
+      "We focus on reducing operational complexity through clear interfaces and connected retail processes.",
+    icon: Workflow,
+  },
+];
 
 export default function Testimonials() {
   return (
-    <div id='testimonials' className="space-y-6 sm:space-y-7 md:space-y-8 lg:space-y-10 mx-auto text-center">
-      {/* Badge */}
+    <section
+      id="why-vendora"
+      className="mx-auto space-y-8 scroll-mt-24 text-center lg:space-y-10"
+    >
       <SlideEffect>
-        <Badge number={settings.badge.number} text={settings.badge.text} />
+        <Badge number={5} text="WHY VENDORA" />
       </SlideEffect>
 
-      {/* Title */}
-      <TextRevealEffect className="text-2xl md:text-4xl lg:text-header text-transparent bg-clip-text bg-gradient-to-b from-black to-black/60 font-medium leading-normal">{settings.title}</TextRevealEffect>
+      <TextRevealEffect className="bg-gradient-to-b from-black to-black/60 bg-clip-text text-3xl font-medium text-transparent md:text-5xl lg:text-header">
+        Technology Built Around Retail.
+      </TextRevealEffect>
 
-      {/* Description */}
-      <SlideEffect className="px-2 sm:px-10 md:px-0 w-full md:max-w-3/4 mx-auto text-sm lg:text-base">{settings.description}</SlideEffect>
-
-      {/* Testimonials */}
-      <SlideEffect>
-        <AnimatedTestimonials autoplay testimonials={settings.testimonials} />
+      <SlideEffect className="mx-auto max-w-3xl text-sm leading-relaxed lg:text-base">
+        VendoraHQ is focused on building modern, practical
+        software for retailers and the people they serve.
       </SlideEffect>
-    </div>
-  )
+
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+        {principles.map((principle, index) => {
+          const Icon = principle.icon;
+
+          return (
+            <SlideEffect
+              key={principle.title}
+              direction={index % 2 === 0 ? "right" : "left"}
+              isSpring={false}
+              className="h-full"
+            >
+              <Card className="h-full text-left">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/20 text-black">
+                  <Icon size={25} />
+                </div>
+
+                <h3 className="text-xl font-medium text-black">
+                  {principle.title}
+                </h3>
+
+                <p className="text-sm leading-relaxed">
+                  {principle.description}
+                </p>
+              </Card>
+            </SlideEffect>
+          );
+        })}
+      </div>
+    </section>
+  );
 }

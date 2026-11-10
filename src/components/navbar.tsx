@@ -1,97 +1,158 @@
-'use client'
 
-import Logo from "./logo"
-import Link from "next/link"
-import { Button } from "./ui/button"
-import { AlignJustify, X } from "lucide-react"
-import { AnimatePresence } from 'motion/react'
-import * as motion from "motion/react-m"
-import { useState } from "react"
+"use client";
+
+import Logo from "./logo";
+import Link from "next/link";
+import { Button } from "./ui/button";
+import {
+  AlignJustify,
+  ArrowRight,
+  X,
+} from "lucide-react";
+import { AnimatePresence } from "motion/react";
+import * as motion from "motion/react-m";
+import { useState } from "react";
 
 const settings = {
   navLinks: [
-    { name: 'home', href: '/' },
-    { name: 'features', href: '#features' },
-    { name: 'pricing', href: '#pricing' },
-    { name: 'testimonials', href: '#testimonials' },
-    { name: 'FAQ', href: '#faq' },
+    { name: "Home", href: "/" },
+    { name: "Products", href: "/#products" },
+    { name: "Features", href: "/#features" },
+    { name: "Pricing", href: "/#pricing" },
+    { name: "FAQ", href: "/#faq" },
+    { name: "Contact Us", href: "/contact" },
   ],
   cta: {
-    content: 'try it for free',
-    href: '/'
-  }
-}
+    content: "Request a Demo",
+    href: "/contact?type=demo",
+  },
+};
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState<boolean>(false)
+  const [isOpen, setIsOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen)
-  }
+  const closeMenu = () => setIsOpen(false);
 
   return (
-    <nav className="w-full h-fit py-4 flex items-center justify-between">
-      {/* Logo */}
-      <Link href='/' title="Home" id="Logo">
-        <Logo />
-      </Link>
+    <nav
+      className="relative z-50 flex w-full items-center justify-between gap-4 py-4"
+      aria-label="Main navigation"
+    >
+      <Logo />
 
-      {/* desktop menu */}
-      <div className="items-center justify-center gap-5 hidden md:flex">
-
-        {/* Nav Links */}
-        <ul className="flex items-center justify-center gap-5 text-black font-medium select-none text-link">
-          {settings.navLinks.map(link => (
+      {/* Desktop Navigation */}
+      <div className="hidden items-center gap-4 md:flex lg:gap-5">
+        <ul className="flex items-center gap-3 text-black font-medium text-link lg:gap-5">
+          {settings.navLinks.map((link) => (
             <li key={link.name}>
-              <Link href={link.href} title={link.name} className="hover:opacity-80 transition-all capitalize">{link.name}</Link>
+              <Link
+                href={link.href}
+                className={`whitespace-nowrap transition-colors ${
+                  link.name === "Contact Us"
+                    ? "font-semibold text-[#26845D] hover:text-black"
+                    : "hover:text-[#26845D]"
+                }`}
+              >
+                {link.name}
+              </Link>
             </li>
           ))}
         </ul>
 
-        {/* Call To Action */}
-        <Link href={settings.cta.href} title={settings.cta.content}>
-          <Button className="capitalize">{settings.cta.content}</Button>
+        <Link
+          href={settings.cta.href}
+          className="shrink-0"
+        >
+          <Button className="flex items-center gap-2 whitespace-nowrap bg-[#26845D] text-white hover:bg-[#206B4C]">
+            {settings.cta.content}
+            <ArrowRight size={16} />
+          </Button>
         </Link>
       </div>
 
-      {/* mobile only - burger menu icon */}
-      <motion.div
-        initial={{ scale: 1, y: 0 }}
-        whileTap={{ scale: 0.8 }}
-        transition={{ duration: 0.3 }}
-        className="bg-white shadow-none flex md:hidden cursor-pointer text-black"
-        onClick={toggleMenu}
+      {/* Mobile Menu Button */}
+      <motion.button
+        type="button"
+        aria-label={isOpen ? "Close menu" : "Open menu"}
+        aria-expanded={isOpen}
+        aria-controls="mobile-navigation"
+        initial={{ scale: 1 }}
+        whileTap={{ scale: 0.9 }}
+        onClick={() => setIsOpen((previous) => !previous)}
+        className="flex items-center justify-center bg-white text-black md:hidden"
       >
-        {!isOpen && <AlignJustify size={20} />}
-        {isOpen && <X size={20} />}
-      </motion.div>
+        {isOpen ? (
+          <X size={24} />
+        ) : (
+          <AlignJustify size={24} />
+        )}
+      </motion.button>
 
-      {/* mobile only - menu container with AnimatePresence for exit animations */}
+      {/* Mobile Navigation */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ height: 0, opacity: 1, y: -20 }}
-            animate={{ height: '100vh', opacity: 1, y: 0 }}
-            exit={{ height: 0, opacity: 1, y: -20 }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed flex flex-col md:hidden top-16 left-0 w-full bg-white z-50 overflow-hidden"
+            id="mobile-navigation"
+            initial={{
+              height: 0,
+              opacity: 0,
+              y: -20,
+            }}
+            animate={{
+              height: "100dvh",
+              opacity: 1,
+              y: 0,
+            }}
+            exit={{
+              height: 0,
+              opacity: 0,
+              y: -20,
+            }}
+            transition={{
+              duration: 0.5,
+              ease: [0.16, 1, 0.3, 1],
+            }}
+            className="fixed left-0 top-16 z-50 flex w-full flex-col overflow-y-auto bg-white md:hidden"
           >
-            <div className="flex flex-col p-6 space-y-6">
-              <ul className="flex flex-col space-y-2 text-black font-medium select-none text-base">
-                {settings.navLinks.map(link => (
+            <div className="flex flex-col space-y-6 p-6">
+              <ul className="flex flex-col space-y-2 font-medium text-black">
+                {settings.navLinks.map((link) => (
                   <li key={link.name}>
-                    <Link href={link.href} title={link.name} onClick={toggleMenu} className="block py-2 capitalize">{link.name}</Link>
+                    <Link
+                      href={link.href}
+                      onClick={closeMenu}
+                      className={`block rounded-xl px-3 py-3 transition-colors hover:bg-[#6ECE9D]/10 ${
+                        link.name === "Contact Us"
+                          ? "bg-[#6ECE9D]/10 font-semibold text-[#26845D]"
+                          : ""
+                      }`}
+                    >
+                      {link.name}
+                    </Link>
                   </li>
                 ))}
               </ul>
 
-              <Link href={settings.cta.href} title={settings.cta.content} onClick={toggleMenu}>
-                <Button className="w-full capitalize">{settings.cta.content}</Button>
+              <Link
+                href={settings.cta.href}
+                onClick={closeMenu}
+                className="block"
+              >
+                <Button className="flex w-full items-center justify-center gap-2 bg-[#26845D] text-white hover:bg-[#206B4C]">
+                  {settings.cta.content}
+                  <ArrowRight size={17} />
+                </Button>
               </Link>
+
+              <p className="text-center text-xs text-[#707070]">
+                Questions about VendoraHQ?
+                Visit our contact page to share
+                your requirements.
+              </p>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
     </nav>
-  )
+  );
 }
