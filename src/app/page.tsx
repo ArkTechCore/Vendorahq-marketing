@@ -16,62 +16,49 @@ import type { Metadata } from "next";
 const siteUrl = "https://vendorahq.app";
 
 export const metadata: Metadata = {
-  title: "VendoraHQ | Retail POS & Business Software",
+  title: {
+    absolute: "VendoraHQ | Retail POS & Business Software",
+  },
+
   description:
-    "Discover VendoraHQ, a retail technology venture founded by Yousuf Mohammed. Explore VendoraPOS, VendoraKiosk, and our vision for connected retail software.",
+    "VendoraHQ develops connected retail technology for modern merchants. Explore VendoraPOS point-of-sale software, VendoraKiosk self-service solutions, and our vision for smarter retail operations.",
+
   alternates: {
     canonical: siteUrl,
   },
+
   openGraph: {
-    title: "VendoraHQ | Building Technology for Modern Retail",
+    title: "VendoraHQ | Retail POS & Business Software",
     description:
-      "Meet VendoraHQ, founded by Yousuf Mohammed, and explore its connected retail technology ecosystem, including VendoraPOS and VendoraKiosk.",
+      "Discover VendoraHQ and its connected retail technology ecosystem, including VendoraPOS, VendoraKiosk, and future customer loyalty solutions.",
     url: siteUrl,
     siteName: "VendoraHQ",
     type: "website",
+    images: [
+      {
+        url: "/brand/logo.jpeg",
+        alt: "VendoraHQ retail technology",
+      },
+    ],
   },
+
   twitter: {
-    card: "summary_large_image",
+    card: "summary",
     title: "VendoraHQ | Retail Technology",
     description:
-      "Retail software innovation from VendoraHQ, founded by Yousuf Mohammed.",
+      "Point-of-sale software, self-service kiosk technology, and connected retail business solutions from VendoraHQ.",
+    images: ["/brand/logo.jpeg"],
   },
+
   robots: {
     index: true,
     follow: true,
   },
 };
 
-const organizationSchema = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "@id": `${siteUrl}/#organization`,
-  name: "VendoraHQ",
-  url: siteUrl,
-  description:
-    "VendoraHQ is an independent retail technology venture developing point-of-sale, self-service kiosk, and connected retail business software.",
-  founder: {
-    "@type": "Person",
-    "@id": `${siteUrl}/founder#person`,
-    name: "Yousuf Mohammed",
-    url: `${siteUrl}/founder`,
-    jobTitle: "Founder and Lead Software Developer",
-  },
-};
-
 export default function HomePage() {
   return (
     <main className="mx-auto max-w-5xl space-y-20 scroll-smooth px-4 sm:space-y-24 md:space-y-32 lg:space-y-40 xl:px-0">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(organizationSchema).replace(
-            /</g,
-            "\\u003c"
-          ),
-        }}
-      />
-
       <Hero />
 
       <Features1 />

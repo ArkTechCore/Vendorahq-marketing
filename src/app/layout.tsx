@@ -15,46 +15,45 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
 
   title: {
-    default: "VendoraHQ (Vendora) | Retail POS & Business Technology",
+    default: "VendoraHQ | Retail POS & Business Software",
     template: "%s | VendoraHQ",
   },
 
   description:
-    "VendoraHQ (Vendora) builds modern retail technology, including VendoraPOS point-of-sale software, VendoraKiosk self-service solutions, and VendoraLoyalty.",
+    "VendoraHQ develops connected retail business software, including VendoraPOS point-of-sale systems, VendoraKiosk self-service technology, and planned VendoraLoyalty solutions.",
 
   applicationName: "VendoraHQ",
 
   keywords: [
-    "Vendora",
     "VendoraHQ",
     "Vendora HQ",
-    "Vendora POS",
+    "VendoraHQ Software",
+    "VendoraHQ Retail Technology",
     "VendoraPOS",
-    "Vendora Kiosk",
     "VendoraKiosk",
-    "Vendora Loyalty",
     "VendoraLoyalty",
     "Retail POS Software",
-    "Point of Sale System",
-    "Retail Technology",
+    "Point of Sale Software",
     "Retail Management Software",
-    "Self Service Kiosk",
+    "Self-Service Retail Kiosk",
+    "Retail Business Technology",
+    "Retail SaaS",
+    "Inventory Management Software",
+    "Store Management Software",
   ],
-
- 
 
   openGraph: {
     type: "website",
     url: siteUrl,
     siteName: "VendoraHQ",
-    title: "VendoraHQ | Retail POS & Business Technology",
+    title: "VendoraHQ | Retail POS & Business Software",
     description:
-      "Explore VendoraHQ retail technology, including VendoraPOS, VendoraKiosk, and VendoraLoyalty.",
+      "Discover VendoraHQ, a retail technology venture developing VendoraPOS, VendoraKiosk, and connected business software for modern merchants.",
     locale: "en_US",
     images: [
       {
         url: "/brand/logo.jpeg",
-        alt: "VendoraHQ Logo",
+        alt: "VendoraHQ official brand logo",
       },
     ],
   },
@@ -63,7 +62,7 @@ export const metadata: Metadata = {
     card: "summary",
     title: "VendoraHQ | Retail Technology",
     description:
-      "VendoraHQ develops retail POS, self-service kiosk, and loyalty technology.",
+      "VendoraHQ develops connected retail technology, including point-of-sale software, self-service kiosks, and future loyalty solutions.",
     images: ["/brand/logo.jpeg"],
   },
 
@@ -79,21 +78,78 @@ export const metadata: Metadata = {
   },
 };
 
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": `${siteUrl}/#organization`,
+  name: "VendoraHQ",
+  legalName: undefined,
+  url: siteUrl,
+  logo: `${siteUrl}/brand/logo.jpeg`,
+  description:
+    "VendoraHQ is an independent retail technology venture developing connected point-of-sale, self-service kiosk, and retail business management software.",
+  knowsAbout: [
+    "Retail Technology",
+    "Point-of-Sale Software",
+    "Retail Management",
+    "Inventory Management",
+    "Self-Service Kiosks",
+    "Business Software",
+    "Retail SaaS",
+  ],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "VendoraHQ Software Products",
+    itemListElement: [
+      {
+        "@type": "OfferCatalog",
+        name: "VendoraPOS",
+        url: `${siteUrl}/products/pos`,
+        description:
+          "Retail point-of-sale and store management software.",
+      },
+      {
+        "@type": "OfferCatalog",
+        name: "VendoraKiosk",
+        url: `${siteUrl}/products/kiosk`,
+        description:
+          "Self-service retail kiosk software.",
+      },
+    ],
+  },
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${siteUrl}/#website`,
+  name: "VendoraHQ",
+  url: siteUrl,
+  description:
+    "Official website of VendoraHQ, an independent retail technology venture.",
+  publisher: {
+    "@id": `${siteUrl}/#organization`,
+  },
+  inLanguage: "en-US",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const organizationSchema = {
+  const structuredData = {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    "@id": `${siteUrl}/#organization`,
-    name: "VendoraHQ",
-    alternateName: "Vendora",
-    url: siteUrl,
-    logo: `${siteUrl}/brand/logo.jpeg`,
-    description:
-      "VendoraHQ develops retail technology including VendoraPOS, VendoraKiosk, and VendoraLoyalty.",
+    "@graph": [
+      {
+        ...organizationSchema,
+        "@context": undefined,
+      },
+      {
+        ...websiteSchema,
+        "@context": undefined,
+      },
+    ],
   };
 
   return (
@@ -104,12 +160,13 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(organizationSchema).replace(
+            __html: JSON.stringify(structuredData).replace(
               /</g,
               "\\u003c"
             ),
           }}
         />
+
         <LenisProvider>{children}</LenisProvider>
       </body>
     </html>
