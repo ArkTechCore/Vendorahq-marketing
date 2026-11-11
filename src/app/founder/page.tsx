@@ -1,5 +1,6 @@
 
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/navbar";
 
@@ -12,6 +13,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/founder",
   },
+  robots: {
+    index: true,
+    follow: true,
+  },
   openGraph: {
     title: "Yousuf Mohammed | Founder of VendoraHQ",
     description:
@@ -19,9 +24,18 @@ export const metadata: Metadata = {
     url: `${siteUrl}/founder`,
     type: "profile",
     siteName: "VendoraHQ",
+    images: [
+      {
+        url: `${siteUrl}/images/yousuf-mohammed.jpg`,
+        width: 1050,
+        height: 1440,
+        alt: "Yousuf Mohammed, Founder of VendoraHQ",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
+    images: [`${siteUrl}/images/yousuf-mohammed.jpg`],
     title: "Yousuf Mohammed | Founder of VendoraHQ",
     description:
       "Software developer, technology entrepreneur, and founder of VendoraHQ.",
@@ -33,6 +47,7 @@ const personSchema = {
   "@type": "Person",
   "@id": `${siteUrl}/founder#person`,
   name: "Yousuf Mohammed",
+  image: `${siteUrl}/images/yousuf-mohammed.jpg`,
   url: `${siteUrl}/founder`,
   jobTitle: "Founder and Lead Software Developer",
   description:
@@ -297,58 +312,47 @@ export default function FounderPage() {
               </div>
             </div>
 
-            {/* FOUNDER IDENTITY CARD */}
-            <div className="relative">
-              <div className="rounded-[32px] border border-[#DDE9DF] bg-white p-8 shadow-[0_24px_80px_rgba(21,65,42,0.07)] md:p-10">
-                <div className="mb-12 flex h-20 w-20 items-center justify-center rounded-3xl bg-[#E5F4E9] text-3xl font-bold text-[#26845D]">
-                  YM
+            {/* FOUNDER PORTRAIT & IDENTITY CARD */}
+            <div className="relative mx-auto w-full max-w-md lg:max-w-none">
+              <div className="overflow-hidden rounded-[32px] border border-[#DDE9DF] bg-white shadow-[0_24px_80px_rgba(21,65,42,0.10)]">
+                <div className="relative aspect-[4/5] w-full overflow-hidden bg-[#E8ECE8]">
+                  <Image
+                    src="/images/yousuf-mohammed.jpg"
+                    alt="Yousuf Mohammed, Founder and Lead Software Developer of VendoraHQ"
+                    fill
+                    priority
+                    sizes="(max-width: 1024px) 100vw, 420px"
+                    className="object-cover object-top"
+                  />
                 </div>
 
-                <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#26845D]">
-                  FOUNDER PROFILE
-                </p>
-
-                <h2 className="mt-4 text-3xl font-bold tracking-tight">
-                  Building beyond
-                  <br />
-                  the checkout.
-                </h2>
-
-                <p className="mt-5 leading-7 text-[#65736B]">
-                  Connecting software engineering, retail
-                  operations, and product development through
-                  the VendoraHQ ecosystem.
-                </p>
-
-                <div className="mt-9 space-y-5 border-t border-[#E6EEE8] pt-7">
-                  <div>
-                    <p className="text-xs uppercase tracking-wider text-[#87958B]">
-                      Venture
-                    </p>
-                    <p className="mt-1 font-semibold">
-                      VendoraHQ
-                    </p>
-                  </div>
-
-                  <div>
-                    <p className="text-xs uppercase tracking-wider text-[#87958B]">
-                      Primary Focus
-                    </p>
-                    <p className="mt-1 font-semibold">
-                      Retail Software & SaaS
-                    </p>
-                  </div>
-
-                  <div>
-                    <p className="text-xs uppercase tracking-wider text-[#87958B]">
-                      Role
-                    </p>
-                    <p className="mt-1 font-semibold">
-                      Founder & Lead Developer
-                    </p>
+                <div className="p-7 md:p-9">
+                  <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#26845D]">
+                    FOUNDER OF VENDORAHQ
+                  </p>
+                  <h2 className="mt-3 text-3xl font-bold tracking-tight text-[#14241D]">
+                    Yousuf Mohammed
+                  </h2>
+                  <p className="mt-2 text-sm font-medium text-[#65736B]">
+                    Founder &amp; Lead Software Developer
+                  </p>
+                  <div className="mt-7 grid grid-cols-2 gap-5 border-t border-[#E6EEE8] pt-6">
+                    <div>
+                      <p className="text-xs uppercase tracking-wider text-[#87958B]">
+                        Venture
+                      </p>
+                      <p className="mt-2 font-semibold text-[#14241D]">VendoraHQ</p>
+                    </div>
+                    <div>
+                      <p className="text-xs uppercase tracking-wider text-[#87958B]">
+                        Focus
+                      </p>
+                      <p className="mt-2 font-semibold text-[#14241D]">Retail SaaS</p>
+                    </div>
                   </div>
                 </div>
               </div>
+              <div className="pointer-events-none absolute -bottom-5 -right-5 -z-10 h-32 w-32 rounded-[28px] bg-[#DDF3E6]" />
             </div>
           </div>
         </section>
