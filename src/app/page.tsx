@@ -9,6 +9,13 @@ import Footer from "@/sections/footer";
 import Hero from "@/sections/hero";
 import Pricing from "@/sections/pricing";
 import Testimonials from "@/sections/testimonials";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "/",
+  },
+};
 
 export default function HomePage() {
   return (

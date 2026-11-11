@@ -41,9 +41,7 @@ export const metadata: Metadata = {
     "Self Service Kiosk",
   ],
 
-  alternates: {
-    canonical: "/",
-  },
+ 
 
   openGraph: {
     type: "website",
