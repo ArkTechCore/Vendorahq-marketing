@@ -700,7 +700,7 @@ export default function FounderPage() {
               <SectionLabel>CONNECT</SectionLabel>
 
               <h2 className="text-4xl font-bold tracking-tight md:text-5xl">
-                Let's connect.
+                Let&apos;s connect.
               </h2>
 
               <p className="mt-6 max-w-xl leading-8 text-[#65736B]">
