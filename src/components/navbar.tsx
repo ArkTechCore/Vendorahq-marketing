@@ -20,6 +20,8 @@ const settings = {
     { name: "Features", href: "/#features" },
     { name: "Pricing", href: "/#pricing" },
     { name: "FAQ", href: "/#faq" },
+    { name: "About", href: "/about" },
+    { name: "Founder", href: "/founder" },
     { name: "Contact Us", href: "/contact" },
   ],
   cta: {
@@ -35,14 +37,14 @@ export default function Navbar() {
 
   return (
     <nav
-      className="relative z-50 flex w-full items-center justify-between gap-4 py-4"
+      className="relative z-50 flex w-full items-center justify-between gap-3 py-4"
       aria-label="Main navigation"
     >
       <Logo />
 
       {/* Desktop Navigation */}
-      <div className="hidden items-center gap-4 md:flex lg:gap-5">
-        <ul className="flex items-center gap-3 text-black font-medium text-link lg:gap-5">
+      <div className="hidden items-center gap-3 lg:gap-4 xl:gap-5 xl:flex">
+        <ul className="flex items-center gap-2 text-black font-medium text-link lg:gap-3 xl:gap-4">
           {settings.navLinks.map((link) => (
             <li key={link.name}>
               <Link
@@ -70,7 +72,7 @@ export default function Navbar() {
         </Link>
       </div>
 
-      {/* Mobile Menu Button */}
+      {/* Mobile / Tablet Menu Button */}
       <motion.button
         type="button"
         aria-label={isOpen ? "Close menu" : "Open menu"}
@@ -79,7 +81,7 @@ export default function Navbar() {
         initial={{ scale: 1 }}
         whileTap={{ scale: 0.9 }}
         onClick={() => setIsOpen((previous) => !previous)}
-        className="flex items-center justify-center bg-white text-black md:hidden"
+        className="flex items-center justify-center bg-white text-black xl:hidden"
       >
         {isOpen ? (
           <X size={24} />
@@ -88,7 +90,7 @@ export default function Navbar() {
         )}
       </motion.button>
 
-      {/* Mobile Navigation */}
+      {/* Mobile / Tablet Navigation */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -112,7 +114,7 @@ export default function Navbar() {
               duration: 0.5,
               ease: [0.16, 1, 0.3, 1],
             }}
-            className="fixed left-0 top-16 z-50 flex w-full flex-col overflow-y-auto bg-white md:hidden"
+            className="fixed left-0 top-16 z-50 flex w-full flex-col overflow-y-auto bg-white xl:hidden"
           >
             <div className="flex flex-col space-y-6 p-6">
               <ul className="flex flex-col space-y-2 font-medium text-black">
