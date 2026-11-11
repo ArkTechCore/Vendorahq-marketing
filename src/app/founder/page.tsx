@@ -236,7 +236,6 @@ function SectionHeading({
       <h2 className="text-3xl font-bold tracking-tight text-[#14241D] md:text-4xl">
         {title}
       </h2>
-
       {description && (
         <p className="mt-5 text-base leading-8 text-[#65736B] md:text-lg">
           {description}
@@ -295,6 +294,7 @@ export default function FounderPage() {
                 connected, and more efficient.
               </p>
 
+              {/* UPDATED: THREE HERO BUTTONS */}
               <div className="mt-10 flex flex-wrap gap-4">
                 <a
                   href="#my-work"
@@ -308,6 +308,16 @@ export default function FounderPage() {
                   className="rounded-xl border border-[#D6E0D8] bg-white px-7 py-4 text-sm font-semibold text-[#14241D] transition hover:border-[#26845D]"
                 >
                   Get in Touch
+                </Link>
+
+                <Link
+                  href="/founder/resume"
+                  className="inline-flex items-center justify-center rounded-xl border border-[#26845D] bg-white px-7 py-4 text-sm font-semibold text-[#26845D] transition hover:bg-[#EDF6EF]"
+                >
+                  View My Resume
+                  <span aria-hidden="true" className="ml-2">
+                    ↗
+                  </span>
                 </Link>
               </div>
             </div>
@@ -336,18 +346,23 @@ export default function FounderPage() {
                   <p className="mt-2 text-sm font-medium text-[#65736B]">
                     Founder &amp; Lead Software Developer
                   </p>
+
                   <div className="mt-7 grid grid-cols-2 gap-5 border-t border-[#E6EEE8] pt-6">
                     <div>
                       <p className="text-xs uppercase tracking-wider text-[#87958B]">
                         Venture
                       </p>
-                      <p className="mt-2 font-semibold text-[#14241D]">VendoraHQ</p>
+                      <p className="mt-2 font-semibold text-[#14241D]">
+                        VendoraHQ
+                      </p>
                     </div>
                     <div>
                       <p className="text-xs uppercase tracking-wider text-[#87958B]">
                         Focus
                       </p>
-                      <p className="mt-2 font-semibold text-[#14241D]">Retail SaaS</p>
+                      <p className="mt-2 font-semibold text-[#14241D]">
+                        Retail SaaS
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -365,7 +380,6 @@ export default function FounderPage() {
           <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
             <div>
               <SectionLabel>THE STORY</SectionLabel>
-
               <h2 className="text-3xl font-bold tracking-tight md:text-5xl">
                 From understanding
                 <br />
@@ -384,20 +398,17 @@ export default function FounderPage() {
                 customer service, sales operations, reporting,
                 and store management.
               </p>
-
               <p>
                 I became interested in how software could
                 reduce repetitive work, connect fragmented
                 processes, and make operational information
                 easier to manage.
               </p>
-
               <p>
                 That perspective helped shape VendoraHQ:
                 a technology venture focused on building
                 practical software for retail businesses.
               </p>
-
               <p>
                 As a developer, I work across product
                 architecture, backend systems, databases,
@@ -455,7 +466,6 @@ export default function FounderPage() {
                   <p className="text-sm font-semibold text-[#91D7A8]">
                     {number}
                   </p>
-
                   <p className="mt-7 text-lg font-semibold">
                     {title}
                   </p>
@@ -466,10 +476,7 @@ export default function FounderPage() {
         </section>
 
         {/* PRODUCTS */}
-        <section
-          id="my-work"
-          className="py-28"
-        >
+        <section id="my-work" className="py-28">
           <SectionLabel>PRODUCT ECOSYSTEM</SectionLabel>
 
           <SectionHeading
@@ -487,7 +494,6 @@ export default function FounderPage() {
                   <span className="text-4xl font-bold text-[#D8EADF]">
                     {product.number}
                   </span>
-
                   <span className="rounded-full bg-[#EDF6EF] px-3 py-1 text-[10px] font-bold tracking-wide text-[#26845D]">
                     {product.status}
                   </span>
@@ -655,7 +661,7 @@ export default function FounderPage() {
               <SectionLabel>EDUCATION</SectionLabel>
 
               <h3 className="text-xl font-bold">
-                Computer Science & Information Technology
+                Computer Science &amp; Information Technology
               </h3>
 
               <p className="mt-4 leading-8 text-[#65736B]">
@@ -714,6 +720,7 @@ export default function FounderPage() {
               </p>
             </div>
 
+            {/* UPDATED: RESUME LINK ADDED */}
             <div className="flex flex-wrap gap-3">
               <Link
                 href="/contact"
@@ -730,6 +737,13 @@ export default function FounderPage() {
               >
                 Developer Portfolio ↗
               </a>
+
+              <Link
+                href="/founder/resume"
+                className="rounded-xl border border-[#26845D] bg-white px-7 py-4 text-sm font-semibold text-[#26845D] transition hover:bg-[#EDF6EF]"
+              >
+                Professional Resume ↗
+              </Link>
             </div>
           </div>
         </section>
@@ -742,7 +756,7 @@ export default function FounderPage() {
             </p>
 
             <p>
-              Yousuf Mohammed — Founder & Lead Software Developer
+              Yousuf Mohammed — Founder &amp; Lead Software Developer
             </p>
           </div>
         </footer>
