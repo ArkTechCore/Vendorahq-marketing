@@ -6,15 +6,15 @@ import Navbar from "@/components/navbar";
 const siteUrl = "https://vendorahq.app";
 
 export const metadata: Metadata = {
-  title: "About VendoraHQ | Retail Software & Founder Yousuf Mohammed",
+  title: "About VendoraHQ | Why We’re Building Better Retail Software",
   description:
-    "Discover VendoraHQ, the retail software venture founded by Yousuf Mohammed. Learn about VendoraPOS, VendoraKiosk, and the planned VendoraLoyalty platform.",
+    "Discover why VendoraHQ exists: to simplify disconnected retail workflows with connected point-of-sale, self-service, and future loyalty software.",
   alternates: { canonical: `${siteUrl}/about` },
   robots: { index: true, follow: true },
   openGraph: {
     title: "About VendoraHQ | Retail Technology & Founder",
     description:
-      "Learn about VendoraHQ, its retail technology products, and founder Yousuf Mohammed.",
+      "Learn why VendoraHQ is building connected retail technology to reduce operational friction for store owners and teams.",
     url: `${siteUrl}/about`,
     siteName: "VendoraHQ",
     type: "website",
@@ -78,7 +78,7 @@ const aboutPageSchema = {
   "@id": `${siteUrl}/about#webpage`,
   url: `${siteUrl}/about`,
   name: "About VendoraHQ",
-  description: "Learn about VendoraHQ, its products, and its founder.",
+  description: "Discover why VendoraHQ is building connected retail technology to simplify fragmented store workflows, and meet its founder.",
   about: { "@id": `${siteUrl}/#organization` },
   mainEntity: { "@id": `${siteUrl}/#organization` },
 };
@@ -104,55 +104,140 @@ export default function AboutPage() {
       <div className="mx-auto max-w-7xl px-5 md:px-8 xl:px-10">
         <Navbar />
 
-        {/* INTRODUCTION */}
+        {/* CUSTOMER-FOCUSED INTRODUCTION */}
         <section className="relative overflow-hidden pb-24 pt-20 md:pb-28 md:pt-28">
           <div className="pointer-events-none absolute -right-28 top-0 h-[400px] w-[400px] rounded-full bg-[#DDF3E6] opacity-70 blur-3xl" />
           <div className="relative max-w-5xl">
             <div className="mb-8 inline-flex items-center gap-3 rounded-full border border-[#CDE7D7] bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-[#26845D]">
               <span className="h-2 w-2 rounded-full bg-[#26845D]" />
-              About VendoraHQ
+              OUR STORY · ABOUT VENDORAHQ
             </div>
-            <h1 className="text-5xl font-bold leading-[1.1] tracking-[-0.05em] md:text-7xl">
-              Building technology
-              <br className="hidden sm:block" /> for <span className="text-[#26845D]">modern retail.</span>
+            <h1 className="max-w-5xl text-5xl font-bold leading-[1.1] tracking-[-0.05em] md:text-7xl">
+              Retail is already hard.
+              <br />
+              <span className="text-[#26845D]">Your software shouldn&apos;t be.</span>
             </h1>
             <p className="mt-9 max-w-3xl text-lg leading-9 text-[#52665A] md:text-xl">
-              VendoraHQ is an independent retail technology venture founded by{" "}
-              <Link href="/founder" className="font-semibold text-[#26845D] underline decoration-[#A8D6B7] underline-offset-4 hover:text-[#174D34]">
-                Yousuf Mohammed
-              </Link>
-              . We are developing connected software products to help retail businesses simplify operations and improve customer experiences.
+              Behind every retail counter is a team juggling customers, inventory, payments,
+              employees, and a hundred decisions that cannot wait. The last thing they need
+              is technology that adds more work.
             </p>
             <p className="mt-5 max-w-3xl leading-8 text-[#65736B]">
-              Our product ecosystem includes VendoraPOS, VendoraKiosk, and the planned VendoraLoyalty platform. Our focus is on thoughtful engineering, practical workflows, and preparing software for real-world retail environments.
+              That&apos;s why we&apos;re building VendoraHQ: a connected retail software ecosystem
+              designed around the realities of running a store, not just the features on a checklist.
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
-              <a href="#products" className="rounded-xl bg-[#26845D] px-7 py-4 text-sm font-semibold text-white transition hover:bg-[#206B4C]">
+              <a href="#our-story" className="rounded-xl bg-[#26845D] px-7 py-4 text-sm font-semibold text-white transition hover:bg-[#206B4C]">
+                Discover Our Story
+              </a>
+              <a href="#products" className="rounded-xl border border-[#D6E0D8] bg-white px-7 py-4 text-sm font-semibold transition hover:border-[#26845D]">
                 Explore Our Products
               </a>
-              <Link href="/founder" className="rounded-xl border border-[#D6E0D8] bg-white px-7 py-4 text-sm font-semibold transition hover:border-[#26845D]">
-                Meet Our Founder
-              </Link>
             </div>
           </div>
         </section>
 
-        {/* PURPOSE */}
-        <section className="grid gap-6 border-t border-[#E2EAE3] py-20 md:grid-cols-2">
-          <div className="rounded-[28px] border border-[#DFE9E1] bg-white p-8 md:p-10">
-            <Eyebrow>OUR PURPOSE</Eyebrow>
-            <h2 className="mt-5 text-3xl font-bold tracking-tight">Make everyday retail simpler.</h2>
-            <p className="mt-5 leading-8 text-[#65736B]">
-              Retail teams work across checkout, inventory, reporting, and customer service. VendoraHQ aims to bring those essential workflows into software that is easier to use and manage.
+        {/* MARKET CHALLENGE */}
+        <section id="our-story" className="border-t border-[#E2EAE3] py-24 md:py-28">
+          <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
+            <div>
+              <Eyebrow>THE PROBLEM WE SEE</Eyebrow>
+              <h2 className="mt-5 text-3xl font-bold tracking-tight md:text-5xl">
+                Too many tools. Too many steps. Not enough clarity.
+              </h2>
+            </div>
+            <div className="space-y-6 text-base leading-9 text-[#596B60]">
+              <p>
+                A customer is waiting at checkout. Someone needs to check stock.
+                The sales report is in another system. The manager is trying to
+                piece together what happened across the day.
+              </p>
+              <p>
+                For many retailers, these aren&apos;t unusual moments. They&apos;re
+                part of the daily routine. Disconnected tools, repeated data entry,
+                manual reports, and fragmented workflows can make simple tasks
+                feel unnecessarily complicated.
+              </p>
+              <p>
+                We believe store owners should spend less time chasing information
+                and more time serving customers, supporting their teams, and growing
+                their businesses.
+              </p>
+            </div>
+          </div>
+          <div className="mt-12 grid gap-5 md:grid-cols-3">
+            {[
+              { number: "01", title: "Disconnected systems", text: "Checkout, inventory, and reporting can live in separate places, making it harder to see the whole business." },
+              { number: "02", title: "Repetitive manual work", text: "Teams lose valuable time switching tools, re-entering information, and preparing operational updates." },
+              { number: "03", title: "Limited visibility", text: "When information is scattered, owners and managers have a harder time making timely, confident decisions." },
+            ].map((problem) => (
+              <div key={problem.number} className="rounded-[24px] border border-[#DFE9E1] bg-white p-8">
+                <p className="text-sm font-bold text-[#26845D]">{problem.number}</p>
+                <h3 className="mt-5 text-xl font-bold">{problem.title}</h3>
+                <p className="mt-4 leading-8 text-[#65736B]">{problem.text}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* WHY WE STARTED */}
+        <section className="rounded-[36px] bg-[#153F2C] px-7 py-16 text-white md:px-14 md:py-20">
+          <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#A9DDB9]">WHY VENDORAHQ EXISTS</p>
+          <h2 className="mt-5 max-w-4xl text-3xl font-bold leading-tight tracking-tight md:text-5xl">
+            What if retail technology worked together as naturally as the people running the store?
+          </h2>
+          <div className="mt-8 grid gap-8 text-base leading-9 text-[#D3E8DA] lg:grid-cols-2">
+            <p>
+              VendoraHQ grew from firsthand exposure to the everyday realities of
+              retail operations. Our founder, <Link href="/founder" className="font-semibold text-white underline underline-offset-4 hover:text-[#A9DDB9]">Yousuf Mohammed</Link>,
+              saw how customer service, store reporting, and operational tasks
+              could become more difficult when processes didn&apos;t connect.
+            </p>
+            <p>
+              Instead of accepting that friction as part of the job, we set out
+              to build something more useful: software shaped by real store needs,
+              with simpler workflows and a connected foundation that can grow
+              alongside a business.
             </p>
           </div>
-          <div className="rounded-[28px] bg-[#153F2C] p-8 text-white md:p-10">
-            <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#A9DDB9]">OUR APPROACH</p>
-            <h2 className="mt-5 text-3xl font-bold tracking-tight">Build for real operations.</h2>
-            <p className="mt-5 leading-8 text-[#D3E8DA]">
-              Our development priorities include reliable business workflows, maintainable systems, appropriate access controls, and connected product experiences.
-            </p>
+        </section>
+
+        {/* WHAT WE ARE CHANGING */}
+        <section className="py-24 md:py-28">
+          <Eyebrow>WHAT WE&apos;RE CHANGING</Eyebrow>
+          <h2 className="mt-5 max-w-4xl text-3xl font-bold tracking-tight md:text-5xl">
+            One connected vision. Less operational friction.
+          </h2>
+          <p className="mt-6 max-w-3xl text-lg leading-9 text-[#65736B]">
+            We&apos;re not trying to add another disconnected tool to the counter.
+            We&apos;re developing products that address different parts of the
+            retail journey and are designed to work toward a more connected experience.
+          </p>
+          <div className="mt-12 grid gap-6 md:grid-cols-2">
+            <div className="rounded-[28px] border border-[#DFE9E1] bg-white p-8 md:p-10">
+              <Eyebrow>FOR RETAIL TEAMS</Eyebrow>
+              <h3 className="mt-5 text-2xl font-bold">More clarity in the day-to-day.</h3>
+              <p className="mt-5 leading-8 text-[#65736B]">
+                Our goal is to bring checkout, inventory, reporting, and store
+                management closer together, so teams can spend less effort
+                navigating software and more effort running the store.
+              </p>
+            </div>
+            <div className="rounded-[28px] border border-[#DFE9E1] bg-white p-8 md:p-10">
+              <Eyebrow>FOR CUSTOMERS</Eyebrow>
+              <h3 className="mt-5 text-2xl font-bold">A smoother experience from start to finish.</h3>
+              <p className="mt-5 leading-8 text-[#65736B]">
+                We&apos;re exploring self-service experiences and future loyalty
+                tools that can make shopping more convenient and help merchants
+                build lasting customer relationships.
+              </p>
+            </div>
           </div>
+          <p className="mt-8 max-w-3xl leading-8 text-[#65736B]">
+            VendoraHQ is in its product development and launch-preparation stage.
+            We&apos;re focused on building, testing, and refining the software before
+            making promises about what it can deliver in live stores.
+          </p>
         </section>
 
         {/* PRODUCTS */}
