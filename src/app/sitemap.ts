@@ -6,12 +6,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const routes = [
     "",
+    "/products/pos",
+    "/products/kiosk",
+    "/products/loyalty",
     "/contact",
   ];
 
   return routes.map((route) => ({
     url: `${baseUrl}${route}`,
-    lastModified: new Date(),
     changeFrequency: "weekly",
     priority: route === "" ? 1 : 0.7,
   }));
